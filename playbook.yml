@@ -1,0 +1,25 @@
+---
+- hosts: jenkins-server
+  roles:
+    - { role: datadog.datadog, become: yes }
+  vars:
+    datadog_api_key: "{{ datadog_api_key }}"
+    datadog_site: "datadoghq.com"
+
+  tasks:
+    - name: Check if Ansible is installed
+      stat:
+        path: /usr/bin/ansible
+      register: ansible_installed
+
+    - name: Install Ansible
+      apt:
+        name: ansible
+        state: present
+      when: not ansible_installed.stat.exists
+
+  handlers:
+    - name: restart datadog-agent
+      service:
+        name: datadog-agent
+        state: restarted

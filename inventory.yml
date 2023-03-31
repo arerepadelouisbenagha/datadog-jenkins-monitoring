@@ -1,0 +1,6 @@
+---
+all:
+  children:
+    jenkins-server:
+      hosts:
+        44.197.208.124:
