@@ -22,3 +22,8 @@ ansible-playbook -i <your inventory file or location> < your playbook > -u < use
 # Step 3/3: Encryt your key befor push.
 
 `ansible-vault encrypt vars.yml `
+
+Basic system dashboard
+
+![pic-1](images/pic-1.png)
+![pic-2](images/pic-2.png)
